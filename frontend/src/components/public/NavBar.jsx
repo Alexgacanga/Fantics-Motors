@@ -19,7 +19,7 @@ const NavBar = () => {
           <span className="text-[#FFFFFF] text-2xl font-extrabold tracking-wider">
             Fantics
           </span>
-          <span className="text-[#FF5600] text-2xl font-extrabold tracking-wider ml-1">
+          <span className="text-[#0066FF] text-2xl font-extrabold tracking-wider ml-1">
             Cars
           </span>
         </div>
@@ -33,18 +33,18 @@ const NavBar = () => {
             <a
               key={link}
               href={`#${link.toLowerCase().replace(" ", "-")}`}
-              className="group relative text-[#FFFFFF] font-medium text-[15px] hover:text-[#FF5600] transition-colors duration-300"
+              className="group relative text-[#FFFFFF] font-medium text-[15px] hover:text-[#0066FF] transition-colors duration-300"
             >
               {link}
               {/* Expanding Bottom Border on Hover */}
-              <span className="absolute -bottom-1.5 left-0 w-full h-[2px] bg-[#FF5600] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center rounded-full"></span>
+              <span className="absolute -bottom-1.5 left-0 w-full h-[2px] bg-[#0066FF] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center rounded-full"></span>
             </a>
           ))}
 
           {/* Call-to-Action (CTA) Button */}
           <a
             href="#contact"
-            className="inline-flex items-center justify-center bg-[#FF5600] text-[#FFFFFF] px-7 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300"
+            className="inline-flex items-center justify-center bg-[#0066FF] text-[#FFFFFF] px-7 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300"
           >
             Contact
           </a>
@@ -56,7 +56,7 @@ const NavBar = () => {
         <div className="md:hidden flex items-center">
           <button
             onClick={toggleMenu}
-            className="text-[#FFFFFF] hover:text-[#FF5600] focus:outline-none transition-colors duration-300 p-2"
+            className="text-[#FFFFFF] hover:text-[#0066FF] focus:outline-none transition-colors duration-300 p-2"
             aria-label="Toggle mobile menu"
             aria-expanded={isMobileMenuOpen}
           >
@@ -116,7 +116,7 @@ const NavBar = () => {
             <a
               key={link}
               href={`#${link.toLowerCase().replace(" ", "-")}`}
-              className="block text-[#FFFFFF] text-lg font-medium px-4 py-3 rounded-xl hover:bg-[#FF5600]/10 hover:text-[#FF5600] transition-colors duration-300"
+              className="block text-[#FFFFFF] text-lg font-medium px-4 py-3 rounded-xl hover:bg-[#0066FF]/10 hover:text-[#0066FF] transition-colors duration-300"
               onClick={() => setIsMobileMenuOpen(false)} // Close menu on click
             >
               {link}
@@ -127,7 +127,7 @@ const NavBar = () => {
           <div className="pt-4 pb-2 px-2">
             <a
               href="#contact"
-              className="block w-full text-center bg-[#FF5600] text-[#FFFFFF] px-6 py-3.5 rounded-full font-semibold tracking-wide transition-all duration-300"
+              className="block w-full text-center bg-[#0066FF] text-[#FFFFFF] px-6 py-3.5 rounded-full font-semibold tracking-wide transition-all duration-300"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact

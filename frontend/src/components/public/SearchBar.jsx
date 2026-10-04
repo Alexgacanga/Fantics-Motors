@@ -242,7 +242,7 @@ const SearchBar = () => {
               className="w-full min-w-0 bg-white/10 border border-white/20 text-[#FFFFFF] rounded-xl pl-12 sm:pl-14 pr-3 sm:pr-6 py-3.5 sm:py-4 focus:outline-none transition-all text-base sm:text-sm placeholder-gray-300 backdrop-blur-md shadow-inner"
             />
           </div>
-          <button className="bg-[#FF5600] text-[#FFFFFF] px-6 md:px-6 py-3.5 sm:py-2 rounded-xl font-bold text-base sm:text-md whitespace-nowrap hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2">
+          <button className="bg-[#0066FF] text-[#FFFFFF] px-6 md:px-6 py-3.5 sm:py-2 rounded-xl font-bold text-base sm:text-md whitespace-nowrap hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2">
             Search
           </button>
         </div>
@@ -274,8 +274,8 @@ const SearchBar = () => {
                   onClick={() => toggleDropdown(group.id)}
                   className={`flex shrink-0 items-center gap-2 px-4 sm:px-6 py-3 rounded-full border transition-all duration-300 ${
                     isOpen
-                      ? "bg-[#FF5600] border-[#FF5600] text-[#FFFFFF] shadow-lg shadow-[#FF5600]/30"
-                      : "bg-white/5 border-white/20 text-gray-200 hover:bg-[#FF5600]/20 hover:border-[#FF5600] hover:text-[#FFFFFF]"
+                      ? "bg-[#0066FF] border-[#0066FF] text-[#FFFFFF] shadow-lg shadow-[#0066FF]/30"
+                      : "bg-white/5 border-white/20 text-gray-200 hover:bg-[#0066FF]/20 hover:border-[#0066FF] hover:text-[#FFFFFF]"
                   }`}
                 >
                   <span className="font-semibold text-sm whitespace-nowrap tracking-wide">
@@ -283,7 +283,7 @@ const SearchBar = () => {
                   </span>
 
                   {activeCount > 0 && (
-                    <span className="flex items-center justify-center bg-[#FF5600] text-[#FFFFFF] text-xs font-bold w-5 h-5 rounded-full border border-[#0A0A0A] shadow-sm">
+                    <span className="flex items-center justify-center bg-[#0066FF] text-[#FFFFFF] text-xs font-bold w-5 h-5 rounded-full border border-[#0A0A0A] shadow-sm">
                       {activeCount}
                     </span>
                   )}
@@ -299,7 +299,7 @@ const SearchBar = () => {
             {totalFiltersCount > 0 && (
               <button
                 onClick={clearAllFilters}
-                className="flex-shrink-0 flex items-center gap-2 px-5 py-3.5 rounded-full text-gray-400 hover:text-[#FF5600] transition-colors duration-300 text-sm font-bold uppercase tracking-wider"
+                className="flex-shrink-0 flex items-center gap-2 px-5 py-3.5 rounded-full text-gray-400 hover:text-[#0066FF] transition-colors duration-300 text-sm font-bold uppercase tracking-wider"
               >
                 Clear All
               </button>
@@ -325,7 +325,7 @@ const SearchBar = () => {
                   </h3>
                   <button
                     onClick={() => setActiveDropdown(null)}
-                    className="text-gray-400 hover:text-[#FF5600] transition-colors p-1 bg-white/5 rounded-full hover:bg-white/10"
+                    className="text-gray-400 hover:text-[#0066FF] transition-colors p-1 bg-white/5 rounded-full hover:bg-white/10"
                   >
                     <CloseIcon className="w-6 h-6" />
                   </button>
@@ -349,7 +349,7 @@ const SearchBar = () => {
                             make: e.target.value,
                           })
                         }
-                        className="w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#FF5600] focus:ring-1 focus:ring-[#FF5600] transition-all"
+                        className="w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#0066FF] focus:ring-1 focus:ring-[#0066FF] transition-all"
                       />
                       <input
                         type="text"
@@ -361,7 +361,7 @@ const SearchBar = () => {
                             model: e.target.value,
                           })
                         }
-                        className="w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#FF5600] focus:ring-1 focus:ring-[#FF5600] transition-all"
+                        className="w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#0066FF] focus:ring-1 focus:ring-[#0066FF] transition-all"
                       />
                       <input
                         type="number"
@@ -373,7 +373,7 @@ const SearchBar = () => {
                             year: e.target.value,
                           })
                         }
-                        className="w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#FF5600] focus:ring-1 focus:ring-[#FF5600] transition-all"
+                        className="w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#0066FF] focus:ring-1 focus:ring-[#0066FF] transition-all"
                       />
                     </div>
                   )}
@@ -401,8 +401,8 @@ const SearchBar = () => {
                               <div
                                 className={`w-5 h-5 flex-shrink-0 rounded-[4px] border flex items-center justify-center transition-all duration-200 ${
                                   isActive
-                                    ? "bg-[#FF5600] border-[#FF5600]"
-                                    : "bg-transparent border-[#FFFFFF] group-hover:border-[#FF5600]"
+                                    ? "bg-[#0066FF] border-[#0066FF]"
+                                    : "bg-transparent border-[#FFFFFF] group-hover:border-[#0066FF]"
                                 }`}
                               >
                                 {isActive && (
@@ -426,7 +426,7 @@ const SearchBar = () => {
                 <div className="mt-6 sm:mt-10 pt-5 sm:pt-6 border-t border-white/10 flex justify-end">
                   <button
                     onClick={() => setActiveDropdown(null)}
-                    className="w-full sm:w-auto bg-[#FF5600] text-[#FFFFFF] px-8 sm:px-10 py-3.5 rounded-xl font-bold hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(255,86,0,0.5)] transition-all duration-300"
+                    className="w-full sm:w-auto bg-[#0066FF] text-[#FFFFFF] px-8 sm:px-10 py-3.5 rounded-xl font-bold hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(0,102,255,0.5)] transition-all duration-300"
                   >
                     View Results
                   </button>

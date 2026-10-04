@@ -239,7 +239,7 @@ const VehicleCard = ({ vehicle }) => {
             {vehicle.images.map((_, idx) => (
               <div
                 key={idx}
-                className={`transition-all duration-300 rounded-full ${idx === currentSlide ? "w-4 h-1.5 bg-[#FF5600]" : "w-1.5 h-1.5 bg-white/50"}`}
+                className={`transition-all duration-300 rounded-full ${idx === currentSlide ? "w-4 h-1.5 bg-[#0066FF]" : "w-1.5 h-1.5 bg-white/50"}`}
               />
             ))}
           </div>
@@ -277,10 +277,10 @@ const VehicleCard = ({ vehicle }) => {
 
         {/* Footer Action */}
         <div className="mt-auto pt-4 border-t border-white/10 flex items-center justify-between text-xs font-bold text-white group/link">
-          <span className="group-hover/link:text-[#FF5600] transition-colors">
+          <span className="group-hover/link:text-[#0066FF] transition-colors">
             View Details
           </span>
-          <ChevronRightIcon className="w-5 h-5 group-hover/link:translate-x-1 group-hover/link:text-[#FF5600] transition-all" />
+          <ChevronRightIcon className="w-5 h-5 group-hover/link:translate-x-1 group-hover/link:text-[#0066FF] transition-all" />
         </div>
       </div>
     </div>
@@ -322,8 +322,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
               onClick={() => onPageChange(page)}
               className={`w-10 h-10 rounded-lg font-bold text-sm transition-all duration-300 ${
                 isActive
-                  ? "bg-[#FF5600] text-white shadow-[0_0_15px_rgba(255,86,0,0.4)] border border-[#FF5600]"
-                  : "bg-transparent text-gray-400 border border-white/10 hover:border-[#FF5600]/50 hover:text-white"
+                  ? "bg-[#0066FF] text-white shadow-[0_0_15px_rgba(0,102,255,0.4)] border border-[#0066FF]"
+                  : "bg-transparent text-gray-400 border border-white/10 hover:border-[#0066FF]/50 hover:text-white"
               }`}
             >
               {page}

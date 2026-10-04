@@ -115,12 +115,12 @@ const BuyingProcess = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-10 sm:mb-16 md:text-center lg:text-left">
-          <span className="text-[#FF5600] font-bold tracking-[0.2em] uppercase text-sm">
+          <span className="text-[#0066FF] font-bold tracking-[0.2em] uppercase text-sm">
             Seamless Experience
           </span>
           <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#FFFFFF] mt-3">
             The Path to Your{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5600] to-orange-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0066FF] to-[#66A3FF]">
               Dream Garage
             </span>
           </h2>
@@ -138,7 +138,7 @@ const BuyingProcess = () => {
             */}
             <div className="lg:sticky lg:top-32 w-full h-full lg:h-[70vh] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
               {/* Outer Glow Effect */}
-              <div className="absolute inset-0 bg-[#FF5600]/20 blur-[100px] -z-10 rounded-full mix-blend-screen scale-95" />
+              <div className="absolute inset-0 bg-[#0066FF]/20 blur-[100px] -z-10 rounded-full mix-blend-screen scale-95" />
 
               {/* Main Premium Image */}
               <img
@@ -154,8 +154,8 @@ const BuyingProcess = () => {
               {/* Overlay Badge */}
               <div className="absolute bottom-8 left-8 z-30 bg-black/60 backdrop-blur-md border border-white/10 px-6 py-3 rounded-xl hidden md:flex items-center gap-3 shadow-xl">
                 <span className="flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-[#FF5600] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-[#FF5600]"></span>
+                  <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-[#0066FF] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-[#0066FF]"></span>
                 </span>
                 <span className="text-white font-semibold text-sm uppercase tracking-wider">
                   Perfect Ride For You
@@ -182,12 +182,12 @@ const BuyingProcess = () => {
                   {/* Timeline Path & Node */}
                   <div className="flex flex-col items-center">
                     {/* Node Dot */}
-                    <div className="w-14 h-14 lg:w-16 lg:h-16 shrink-0 rounded-full bg-[#0A0A0A] border-2 border-white/10 group-hover:border-[#FF5600] group-hover:shadow-[0_0_15px_rgba(255,86,0,0.4)] flex items-center justify-center transition-all duration-300 z-10 relative">
-                      <step.icon className="w-6 h-6 lg:w-7 lg:h-7 text-white group-hover:text-[#FF5600] transition-colors duration-300" />
+                    <div className="w-14 h-14 lg:w-16 lg:h-16 shrink-0 rounded-full bg-[#0A0A0A] border-2 border-white/10 group-hover:border-[#0066FF] group-hover:shadow-[0_0_15px_rgba(0,102,255,0.4)] flex items-center justify-center transition-all duration-300 z-10 relative">
+                      <step.icon className="w-6 h-6 lg:w-7 lg:h-7 text-white group-hover:text-[#0066FF] transition-colors duration-300" />
                     </div>
                     {/* Connecting Line */}
                     {!isLast && (
-                      <div className="w-[2px] flex-1 bg-white/10 group-hover:bg-gradient-to-b group-hover:from-[#FF5600] group-hover:to-white/10 transition-all duration-500 my-2"></div>
+                      <div className="w-[2px] flex-1 bg-white/10 group-hover:bg-gradient-to-b group-hover:from-[#0066FF] group-hover:to-white/10 transition-all duration-500 my-2"></div>
                     )}
                   </div>
 
@@ -198,16 +198,16 @@ const BuyingProcess = () => {
                     <div
                       className={`bg-[#171717] rounded-2xl p-5 sm:p-6 lg:p-8 border transition-all duration-300 relative overflow-hidden shadow-lg ${
                         isHovered
-                          ? "border-[#FF5600]/60 -translate-y-1.5 shadow-black/50"
-                          : "border-white/5 group-hover:border-[#FF5600]/50 group-hover:-translate-y-1.5 group-hover:shadow-black/50"
+                          ? "border-[#0066FF]/60 -translate-y-1.5 shadow-black/50"
+                          : "border-white/5 group-hover:border-[#0066FF]/50 group-hover:-translate-y-1.5 group-hover:shadow-black/50"
                       }`}
                     >
                       {/* Enormous Watermark Number */}
-                      <span className="absolute -right-4 -top-8 text-[110px] lg:text-[140px] font-extrabold text-white/[0.03] group-hover:text-[#FF5600]/[0.08] group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 pointer-events-none select-none">
+                      <span className="absolute -right-4 -top-8 text-[110px] lg:text-[140px] font-extrabold text-white/[0.03] group-hover:text-[#0066FF]/[0.08] group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 pointer-events-none select-none">
                         {step.id}
                       </span>
 
-                      <h3 className="text-lg sm:text-xl font-bold text-[#FFFFFF] mb-3 relative z-10 transition-colors duration-300 group-hover:text-[#FF5600]">
+                      <h3 className="text-lg sm:text-xl font-bold text-[#FFFFFF] mb-3 relative z-10 transition-colors duration-300 group-hover:text-[#0066FF]">
                         {step.title}
                       </h3>
 

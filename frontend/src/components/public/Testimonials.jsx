@@ -45,7 +45,7 @@ const Testimonials = () => {
         {/* SECTION HEADER                             */}
         {/* ========================================== */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-          <span className="text-[#FF5600] font-bold tracking-[0.25em] uppercase text-sm inline-block mb-3">
+          <span className="text-[#0066FF] font-bold tracking-[0.25em] uppercase text-sm inline-block mb-3">
             Client Reviews
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#FFFFFF]">
@@ -64,10 +64,10 @@ const Testimonials = () => {
           {TESTIMONIALS.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="relative flex flex-col bg-[#171717] rounded-2xl p-6 sm:p-8 border border-white/10 overflow-hidden group transition-all duration-300 ease-out hover:-translate-y-2 hover:border-[#FF5600]/50 hover:shadow-[0_8px_30px_rgba(255,86,0,0.15)]"
+              className="relative flex flex-col bg-[#171717] rounded-2xl p-6 sm:p-8 border border-white/10 overflow-hidden group transition-all duration-300 ease-out hover:-translate-y-2 hover:border-[#0066FF]/50 hover:shadow-[0_8px_30px_rgba(0,102,255,0.15)]"
             >
               {/* Background Decorative Quote Icon */}
-              <div className="absolute -top-4 -right-4 text-white/5 group-hover:text-[#FF5600]/5 transition-colors duration-500 pointer-events-none transform rotate-12">
+              <div className="absolute -top-4 -right-4 text-white/5 group-hover:text-[#0066FF]/5 transition-colors duration-500 pointer-events-none transform rotate-12">
                 <QuoteIcon className="w-32 h-32" />
               </div>
 
@@ -76,7 +76,7 @@ const Testimonials = () => {
                 {[...Array(5)].map((_, index) => (
                   <StarIcon
                     key={index}
-                    className="w-5 h-5 text-[#FF5600] fill-[#FF5600]"
+                    className="w-5 h-5 text-[#0066FF] fill-[#0066FF]"
                   />
                 ))}
               </div>
@@ -90,18 +90,18 @@ const Testimonials = () => {
               {/* Customer Profile Area */}
               <div className="flex items-center gap-4 mt-auto border-t border-white/10 pt-6 relative z-10">
                 {/* Avatar */}
-                <div className="w-12 h-12 shrink-0 rounded-full bg-white/5 border-2 border-white/10 text-gray-300 flex items-center justify-center group-hover:border-[#FF5600] group-hover:text-[#FF5600] transition-colors duration-300">
+                <div className="w-12 h-12 shrink-0 rounded-full bg-white/5 border-2 border-white/10 text-gray-300 flex items-center justify-center group-hover:border-[#0066FF] group-hover:text-[#0066FF] transition-colors duration-300">
                   <UserRound className="w-6 h-6" aria-hidden="true" />
                 </div>
 
                 {/* Name & Vehicle Details */}
                 <div className="flex flex-col">
-                  <h4 className="text-[#FFFFFF] font-bold text-base group-hover:text-[#FF5600] transition-colors duration-300">
+                  <h4 className="text-[#FFFFFF] font-bold text-base group-hover:text-[#0066FF] transition-colors duration-300">
                     {testimonial.name}
                   </h4>
                   <p className="text-xs font-medium text-gray-400 mt-0.5">
                     Bought:{" "}
-                    <span className="text-[#FF5600]/90">
+                    <span className="text-[#0066FF]/90">
                       {testimonial.vehicle}
                     </span>
                   </p>

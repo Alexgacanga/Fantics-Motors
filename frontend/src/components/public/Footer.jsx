@@ -13,11 +13,11 @@ const Footer = () => {
             {/* Logo */}
             <div className="text-2xl font-extrabold tracking-wider mb-4 cursor-pointer">
               <span>Fantics</span>
-              <span className="text-[#FF5600] ml-1">Cars</span>
+              <span className="text-[#0066FF] ml-1">Cars</span>
             </div>
             {/* Tagline & Description */}
             <h3 className="text-lg font-medium mb-3 text-gray-200">
-              Performance, Prestige, and Power.
+              Quality, Reliability, and Value.
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed">
               Your premier destination for high-quality, meticulously inspected
@@ -37,7 +37,7 @@ const Footer = () => {
                   <li key={link}>
                     <a
                       href={`#${link.toLowerCase().replace(" ", "-")}`}
-                      className="text-gray-300 inline-block transform hover:translate-x-1 hover:text-[#FF5600] transition-all duration-300 ease-in-out font-medium"
+                      className="text-gray-300 inline-block transform hover:translate-x-1 hover:text-[#0066FF] transition-all duration-300 ease-in-out font-medium"
                     >
                       {link}
                     </a>
@@ -58,7 +58,7 @@ const Footer = () => {
                   <li key={link}>
                     <a
                       href={`#${link.toLowerCase().replace(" ", "-")}`}
-                      className="text-gray-300 inline-block transform hover:translate-x-1 hover:text-[#FF5600] transition-all duration-300 ease-in-out font-medium"
+                      className="text-gray-300 inline-block transform hover:translate-x-1 hover:text-[#0066FF] transition-all duration-300 ease-in-out font-medium"
                     >
                       {link}
                     </a>
@@ -78,7 +78,7 @@ const Footer = () => {
               <a
                 href="#facebook"
                 aria-label="Facebook"
-                className="text-gray-400 hover:text-[#FF5600] hover:scale-110 transition-all duration-300 ease-in-out"
+                className="text-gray-400 hover:text-[#0066FF] hover:scale-110 transition-all duration-300 ease-in-out"
               >
                 <svg
                   className="w-6 h-6"
@@ -97,7 +97,7 @@ const Footer = () => {
               <a
                 href="#instagram"
                 aria-label="Instagram"
-                className="text-gray-400 hover:text-[#FF5600] hover:scale-110 transition-all duration-300 ease-in-out"
+                className="text-gray-400 hover:text-[#0066FF] hover:scale-110 transition-all duration-300 ease-in-out"
               >
                 <svg
                   className="w-6 h-6"
@@ -116,7 +116,7 @@ const Footer = () => {
               <a
                 href="#tiktok"
                 aria-label="TikTok"
-                className="text-gray-400 hover:text-[#FF5600] hover:scale-110 transition-all duration-300 ease-in-out"
+                className="text-gray-400 hover:text-[#0066FF] hover:scale-110 transition-all duration-300 ease-in-out"
               >
                 <svg
                   className="w-6 h-6"
@@ -131,7 +131,7 @@ const Footer = () => {
               <a
                 href="#whatsapp"
                 aria-label="WhatsApp"
-                className="text-gray-400 hover:text-[#FF5600] hover:scale-110 transition-all duration-300 ease-in-out"
+                className="text-gray-400 hover:text-[#0066FF] hover:scale-110 transition-all duration-300 ease-in-out"
               >
                 <svg
                   className="w-6 h-6"
@@ -158,13 +158,13 @@ const Footer = () => {
           <div className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2">
             <a
               href="#privacy"
-              className="hover:text-[#FF5600] transition-colors duration-300"
+              className="hover:text-[#0066FF] transition-colors duration-300"
             >
               Privacy Policy
             </a>
             <a
               href="#terms"
-              className="hover:text-[#FF5600] transition-colors duration-300"
+              className="hover:text-[#0066FF] transition-colors duration-300"
             >
               Terms of Service
             </a>
