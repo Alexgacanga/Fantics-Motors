@@ -182,10 +182,10 @@ const VehicleCard = ({ vehicle }) => {
   return (
     <div
       onClick={handleCardClick}
-      className="group relative flex flex-col bg-[#171717] rounded-2xl overflow-hidden border border-white/5 hover:border-[#FF5600]/40 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer shadow-xl"
+      className="group relative flex flex-col bg-[#171717] rounded-2xl overflow-hidden border border-white/5 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer shadow-xl"
     >
       {/* 1. MEDIA SECTION (Carousel) */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#0A0A0A]">
+      <div className="relative aspect-[5/3] w-full overflow-hidden bg-[#0A0A0A]">
         {/* Images */}
         {vehicle.images.map((img, idx) => (
           <img
@@ -208,7 +208,7 @@ const VehicleCard = ({ vehicle }) => {
           </div>
         </div>
         <div className="absolute top-3 right-3 z-20">
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] uppercase tracking-wider px-2 py-1 rounded-md shadow-lg font-semibold">
+          <div className="bg-black backdrop-blur-md border border-white/20 text-white text-[10px] uppercase tracking-wider px-2 py-1 rounded-md shadow-lg font-semibold">
             {vehicle.condition}
           </div>
         </div>
@@ -218,14 +218,14 @@ const VehicleCard = ({ vehicle }) => {
           <div className="absolute inset-0 z-20 flex items-center justify-between px-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
             <button
               onClick={prevSlide}
-              className="pointer-events-auto bg-black/50 hover:bg-[#FF5600] text-white p-1.5 rounded-full backdrop-blur-sm transition-all hover:scale-110 active:scale-95"
+              className="pointer-events-auto bg-black/50 text-white p-1.5 rounded-full backdrop-blur-sm transition-all hover:scale-110 active:scale-95"
               aria-label="Previous Image"
             >
               <ChevronLeftIcon className="w-5 h-5" />
             </button>
             <button
               onClick={nextSlide}
-              className="pointer-events-auto bg-black/50 hover:bg-[#FF5600] text-white p-1.5 rounded-full backdrop-blur-sm transition-all hover:scale-110 active:scale-95"
+              className="pointer-events-auto bg-black/50 text-white p-1.5 rounded-full backdrop-blur-sm transition-all hover:scale-110 active:scale-95"
               aria-label="Next Image"
             >
               <ChevronRightIcon className="w-5 h-5" />
@@ -247,28 +247,28 @@ const VehicleCard = ({ vehicle }) => {
       </div>
 
       {/* 2. CONTENT SECTION */}
-      <div className="p-5 flex flex-col flex-grow">
+      <div className="p-3 flex flex-col flex-grow">
         {/* Header */}
         <div>
           <span className="text-[#9CA3AF] text-xs font-semibold uppercase tracking-widest">
             {vehicle.year} • {vehicle.brand}
           </span>
-          <h3 className="text-white text-xl font-bold mt-1 leading-tight line-clamp-1 group-hover:text-[#FF5600] transition-colors">
+          <h3 className="text-white text-xl font-bold mt-1 leading-tight line-clamp-1 transition-colors">
             {vehicle.model}
           </h3>
         </div>
 
         {/* Price */}
-        <div className="mt-3">
+        <div className="mt-1">
           <span
-            className={`text-2xl font-extrabold tracking-tight ${isSold ? "text-gray-400 line-through" : "text-[#FF5600]"}`}
+            className={`text-sm font-extrabold tracking-tight ${isSold ? "text-gray-400 line-through" : "text-[#e2dedc]"}`}
           >
             {formatPrice(vehicle.price)}
           </span>
         </div>
 
         {/* Specifications Grid */}
-        <div className="grid grid-cols-2 gap-2 mt-5 mb-6">
+        <div className="grid grid-cols-2 gap-1 mt-3 mb-6">
           <SpecChip icon={<EngineIcon />} label={vehicle.engine} />
           <SpecChip icon={<FuelIcon />} label={vehicle.fuel} />
           <SpecChip icon={<DriveIcon />} label={vehicle.drive} />
@@ -276,7 +276,7 @@ const VehicleCard = ({ vehicle }) => {
         </div>
 
         {/* Footer Action */}
-        <div className="mt-auto pt-4 border-t border-white/10 flex items-center justify-between text-sm font-bold text-white group/link">
+        <div className="mt-auto pt-4 border-t border-white/10 flex items-center justify-between text-xs font-bold text-white group/link">
           <span className="group-hover/link:text-[#FF5600] transition-colors">
             View Details
           </span>
@@ -307,7 +307,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(Math.max(1, currentPage - 1))}
         disabled={currentPage === 1}
-        className="p-2 rounded-lg border border-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed hover:border-[#FF5600]/50 hover:text-[#FF5600] transition-all"
+        className="p-2 rounded-lg border border-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowedtransition-all"
       >
         <ChevronLeftIcon className="w-5 h-5" />
       </button>
@@ -336,7 +336,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
         disabled={currentPage === totalPages}
-        className="p-2 rounded-lg border border-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed hover:border-[#FF5600]/50 hover:text-[#FF5600] transition-all"
+        className="p-2 rounded-lg border border-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
       >
         <ChevronRightIcon className="w-5 h-5" />
       </button>
@@ -352,16 +352,16 @@ export default function VehicleGrid() {
   const totalPages = 4; // Mock total pages
 
   return (
-    <section className="bg-[#0A0A0A] min-h-screen py-16 font-sans">
+    <section className="bg-[#0A0A0A] min-h-screen font-sans">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Grid Header Info (Optional context for the page) */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 border-b border-gray-800 pb-4 gap-3">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-6 sm:mb-8 border-b border-gray-800 pb-4 gap-3">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-              Premium Inventory
+            <h2 className="text-lg sm:text-3xl font-extrabold text-white">
+              Available Cars
             </h2>
             <p className="text-gray-400 mt-2 text-sm">
-              Showing 1-8 of 32 luxury vehicles available
+              Showing 1-8 of 32 vehicles available
             </p>
           </div>
         </div>

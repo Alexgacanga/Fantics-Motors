@@ -111,14 +111,14 @@ const BuyingProcess = () => {
   const [hoveredStep, setHoveredStep] = useState(null);
 
   return (
-    <section className="bg-[#0A0A0A] w-full min-h-screen py-20 lg:py-32 overflow-hidden font-sans">
+    <section className="bg-[#0A0A0A] w-full min-h-screen pt-14 sm:pt-20 lg:pt-32 overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-16 md:text-center lg:text-left">
+        <div className="mb-10 sm:mb-16 md:text-center lg:text-left">
           <span className="text-[#FF5600] font-bold tracking-[0.2em] uppercase text-sm">
             Seamless Experience
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#FFFFFF] mt-3">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#FFFFFF] mt-3">
             The Path to Your{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5600] to-orange-400">
               Dream Garage
@@ -131,7 +131,7 @@ const BuyingProcess = () => {
           {/* ========================================== */}
           {/* LEFT COLUMN: Sticky Media Presentation     */}
           {/* ========================================== */}
-          <div className="relative w-full h-[22rem] sm:h-[28rem] lg:h-auto lg:min-h-screen">
+          <div className="relative w-full h-64 sm:h-[28rem] lg:h-auto lg:min-h-screen">
             {/* 
               sticky top-32 allows the image to lock in place on desktop 
               while the user scrolls through the timeline steps 
@@ -158,7 +158,7 @@ const BuyingProcess = () => {
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-[#FF5600]"></span>
                 </span>
                 <span className="text-white font-semibold text-sm uppercase tracking-wider">
-                  Premium Concierge
+                  Perfect Ride For You
                 </span>
               </div>
             </div>
@@ -207,11 +207,11 @@ const BuyingProcess = () => {
                         {step.id}
                       </span>
 
-                      <h3 className="text-2xl font-bold text-[#FFFFFF] mb-3 relative z-10 transition-colors duration-300 group-hover:text-[#FF5600]">
+                      <h3 className="text-lg sm:text-xl font-bold text-[#FFFFFF] mb-3 relative z-10 transition-colors duration-300 group-hover:text-[#FF5600]">
                         {step.title}
                       </h3>
 
-                      <p className="text-gray-400 leading-relaxed relative z-10 text-base lg:text-lg group-hover:text-gray-300 transition-colors duration-300">
+                      <p className="text-gray-400 leading-relaxed relative z-10 text-xs lg:text-sm group-hover:text-gray-300 transition-colors duration-300">
                         {step.description}
                       </p>
                     </div>
@@ -219,26 +219,6 @@ const BuyingProcess = () => {
                 </div>
               );
             })}
-
-            {/* Call to Action Button */}
-            <div className="mt-14 ml-0 lg:ml-24">
-              <button className="w-full sm:w-auto flex items-center justify-center gap-3 bg-[#FF5600] text-[#FFFFFF] px-8 sm:px-10 py-4 sm:py-5 rounded-xl font-bold text-base sm:text-lg hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(255,86,0,0.5)] transition-all duration-300 group">
-                <span>Start Your Journey</span>
-                <svg
-                  className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={3}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </button>
-            </div>
           </div>
         </div>
       </div>

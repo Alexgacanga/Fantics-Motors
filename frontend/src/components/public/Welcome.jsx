@@ -25,86 +25,82 @@ const Welcome = () => {
       {/* ========================================== */}
       {/* HERO SECTION WRAPPER                       */}
       {/* ========================================== */}
-      <section className="relative w-full min-h-[600px] h-screen pt-20 md:pt-24 flex items-center justify-start overflow-hidden bg-[#0A0A0A]">
+      {/* Removed the flex centering here so the inner container can manage its own full height on mobile */}
+      <section className="relative w-full min-h-[100svh] sm:min-h-[600px] sm:h-screen overflow-hidden bg-[#0A0A0A]">
         
         {/* 1. Immersive Background & Overlays */}
         <div className="absolute inset-0 z-0">
           {/* High-Resolution Vehicle Background Image */}
-          <img 
-            src="/bg1.jpg" 
-            alt="Fantics Motors Premium Sports Car" 
+          <img
+            src="/bg1.png"
+            alt="Fantics Motors Premium Sports Car"
             className="w-full h-full object-cover object-center"
           />
-          
+
           {/* Desktop/Tablet Gradient Overlay (Dark to Transparent) */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/80 md:via-[#0A0A0A]/60 to-transparent"></div>
-          
+
           {/* Mobile Fallback Gradient Overlay (Ensures text legibility on smaller screens where image crops differently) */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/50 to-transparent md:hidden"></div>
         </div>
 
         {/* 2. Main Content Container */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl w-full">
+        {/* Added flex and min-h-[100svh] to allow vertical spreading on mobile, while reverting to standard center alignment on desktop */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[90svh] sm:min-h-0 sm:h-full flex flex-col sm:flex-row sm:items-center pt-20 pb-8 sm:py-0">
+          
+          <div className="max-w-3xl w-full flex flex-col h-full sm:h-auto text-center sm:text-left flex-grow">
             
-            {/* Eyebrow / Kicker */}
-            <span className="block text-[#FF5600] tracking-[0.12em] sm:tracking-[0.2em] font-semibold text-xs sm:text-sm md:text-base uppercase mb-4 animate-fade-in-up">
-              Welcome to Fantics Motors
-            </span>
-            
-            {/* Main Headline (H1) */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#FFFFFF] leading-[1.1] mb-6 animate-fade-in-up delay-100 tracking-tight">
-              Ignite Your Drive. <br />
-              Experience Automotive <span className="text-[#FF5600]">Perfection.</span>
-            </h1>
-            
-            {/* Subheadline / Lead Paragraph */}
-            <p className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed mb-10 animate-fade-in-up delay-200">
-              Discover a meticulously curated collection of premium, high-performance, and luxury vehicles designed to elevate every journey. Your dream car awaits.
-            </p>
-            
+            {/* Text Wrapper: flex-1 takes all available space above the buttons on mobile to center the text */}
+            <div className="flex-1 flex flex-col justify-center sm:block">
+              {/* Main Headline (H1) */}
+              <h1 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold text-[#FFFFFF] leading-[1.1] mb-2 sm:mb-6 animate-fade-in-up delay-100 tracking-tight">
+                Ignite Your Drive. <br className="hidden sm:block" />
+                Experience Automotive{" "}
+                <span className="text-[#FF5600]">Perfection.</span>
+              </h1>
+
+              {/* Subheadline / Lead Paragraph */}
+              <p className="sm:text-base text-gray-300 max-w-2xl leading-relaxed animate-fade-in-up delay-200 mx-auto sm:mx-0">
+                Discover a diverse selection of quality vehicles handpicked to elevate your everyday drive. Your perfect car awaits.
+              </p>
+            </div>
+
             {/* Call-to-Action (CTA) Button Group */}
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 animate-fade-in-up delay-300">
+            <div className="mt-auto pt-6 sm:pt-0 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-6 animate-fade-in-up delay-300">
               
               {/* Primary Button */}
-              <button 
-                onClick={() => console.log('Navigate to Inventory')}
-                className="group relative flex w-full sm:w-auto items-center justify-center bg-[#FF5600] text-[#FFFFFF] px-8 py-4 rounded-md font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(255,86,0,0.5)]"
+              <button
+                onClick={() => console.log("Navigate to Inventory")}
+                className="group relative flex w-full sm:w-auto items-center justify-center bg-[#FF5600] text-[#FFFFFF] px-6 sm:px-8 py-3.5 sm:py-4 rounded-md font-bold text-base sm:text-lg transition-all duration-300 hover:-translate-y-1"
               >
-                <span>Explore Inventory</span>
+                <span>Explore Our Cars</span>
                 {/* Arrow Icon that slides right on hover */}
-                <svg 
-                  className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1.5" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
+                <svg
+                  className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2.5}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
                 </svg>
               </button>
-              
+
               {/* Secondary Button */}
-              <button 
-                onClick={() => console.log('Open Test Drive Modal')}
-                className="flex w-full sm:w-auto items-center justify-center bg-transparent border-2 border-[#FFFFFF] text-[#FFFFFF] px-8 py-4 rounded-md font-bold text-lg transition-all duration-300 hover:bg-[#FFFFFF] hover:text-[#0A0A0A] hover:-translate-y-1"
+              <button
+                onClick={() => console.log("Open Test Drive Modal")}
+                className="flex w-full sm:w-auto items-center justify-center bg-transparent border-2 border-[#FFFFFF] text-[#FFFFFF] px-6 sm:px-8 py-3.5 sm:py-4 rounded-md font-bold text-base sm:text-lg transition-all duration-300 hover:bg-[#FFFFFF] hover:text-[#0A0A0A] hover:-translate-y-1"
               >
-                Book a Test Drive
+                Our Buying Process
               </button>
-
             </div>
+            
           </div>
         </div>
-
-        {/* 3. Subtle Scroll Indicator (Absolute positioned at the bottom) */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center animate-fade-in-up delay-400">
-          <span className="text-[#FFFFFF] text-xs font-semibold uppercase tracking-widest mb-2 opacity-70">
-            Scroll to Explore
-          </span>
-          <div className="w-5 h-8 border-2 border-[#FFFFFF]/50 rounded-full flex justify-center pt-1.5">
-            <div className="w-1 h-2 bg-[#FF5600] rounded-full animate-bounce"></div>
-          </div>
-        </div>
-
       </section>
     </>
   );

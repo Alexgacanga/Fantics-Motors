@@ -44,7 +44,7 @@ const NavBar = () => {
           {/* Call-to-Action (CTA) Button */}
           <a
             href="#contact"
-            className="inline-flex items-center justify-center bg-[#FF5600] text-[#FFFFFF] px-7 py-2.5 rounded-full font-semibold text-[15px] tracking-wide hover:-translate-y-1 hover:shadow-[0_4px_14px_0_rgba(255,86,0,0.39)] transition-all duration-300"
+            className="inline-flex items-center justify-center bg-[#FF5600] text-[#FFFFFF] px-7 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-all duration-300"
           >
             Contact
           </a>
@@ -127,7 +127,7 @@ const NavBar = () => {
           <div className="pt-4 pb-2 px-2">
             <a
               href="#contact"
-              className="block w-full text-center bg-[#FF5600] text-[#FFFFFF] px-6 py-3.5 rounded-full font-semibold tracking-wide hover:shadow-[0_4px_14px_0_rgba(255,86,0,0.39)] transition-all duration-300"
+              className="block w-full text-center bg-[#FF5600] text-[#FFFFFF] px-6 py-3.5 rounded-full font-semibold tracking-wide transition-all duration-300"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact

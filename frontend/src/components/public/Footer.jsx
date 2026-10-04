@@ -6,7 +6,7 @@ const Footer = () => {
       {/* ======================= */}
       {/* MAIN FOOTER GRID        */}
       {/* ======================= */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8 lg:gap-12">
           {/* Column 1: Brand & Identity */}
           <div className="flex flex-col">
@@ -153,9 +153,9 @@ const Footer = () => {
         {/* ======================= */}
         {/* BOTTOM COPYRIGHT BAR    */}
         {/* ======================= */}
-        <div className="mt-16 pt-8 border-t border-gray-800/50 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+        <div className="mt-12 sm:mt-16 pt-8 border-t border-gray-800/50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs sm:text-sm text-gray-500 text-center md:text-left">
           <p>&copy; {currentYear} Fantics Motors. All rights reserved.</p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2">
             <a
               href="#privacy"
               className="hover:text-[#FF5600] transition-colors duration-300"

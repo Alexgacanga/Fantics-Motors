@@ -1,3 +1,5 @@
+import { UserRound } from "lucide-react";
+
 // ==========================================
 // MOCK TESTIMONIAL DATA
 // ==========================================
@@ -8,8 +10,6 @@ const TESTIMONIALS = [
     vehicle: "Mercedes-Benz G63 AMG",
     review:
       "Absolutely flawless experience. Fantics Motors handled the entire importation and registration process. The car was delivered to my doorstep in pristine condition. Highly recommended.",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
   },
   {
     id: 2,
@@ -17,8 +17,6 @@ const TESTIMONIALS = [
     vehicle: "Porsche 911 Carrera",
     review:
       "The level of transparency here is unmatched. They provided a detailed virtual walkaround and upfront financing terms. Driving off the lot felt like a VIP experience.",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
   },
   {
     id: 3,
@@ -26,8 +24,6 @@ const TESTIMONIALS = [
     vehicle: "Toyota Land Cruiser LC300",
     review:
       "I traded in my old SUV for a locally used LC300. The valuation was incredibly fair, and the upgrade process was seamless. Fantics Cars truly understands customer service.",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
   },
   {
     id: 4,
@@ -35,8 +31,6 @@ const TESTIMONIALS = [
     vehicle: "BMW X5 xDrive40i",
     review:
       "From the moment I stepped into the showroom, the team was professional and not pushy at all. The car's condition exceeded my expectations. I will definitely be a returning customer.",
-    avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80",
   },
 ];
 
@@ -45,21 +39,21 @@ const TESTIMONIALS = [
 // ==========================================
 const Testimonials = () => {
   return (
-    <section className="bg-[#0A0A0A] w-full py-24 font-sans border-t border-white/5">
+    <section className="bg-[#0A0A0A] w-full py-16 sm:py-24 font-sans border-t border-white/5">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* ========================================== */}
         {/* SECTION HEADER                             */}
         {/* ========================================== */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <span className="text-[#FF5600] font-bold tracking-[0.25em] uppercase text-sm inline-block mb-3">
             Client Reviews
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#FFFFFF]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#FFFFFF]">
             What Our Drivers Say
           </h2>
-          <p className="text-gray-400 mt-4 text-lg">
-            Don't just take our word for it. Discover why automotive enthusiasts
-            and luxury buyers trust Fantics Motors.
+          <p className="text-gray-400 mt-4 text-base sm:text-lg">
+            Don't just take our word for it. Discover why drivers of all kinds
+            trust Fantics Motors to find their perfect ride.
           </p>
         </div>
 
@@ -96,12 +90,8 @@ const Testimonials = () => {
               {/* Customer Profile Area */}
               <div className="flex items-center gap-4 mt-auto border-t border-white/10 pt-6 relative z-10">
                 {/* Avatar */}
-                <div className="relative">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-transparent group-hover:border-[#FF5600] transition-colors duration-300"
-                  />
+                <div className="w-12 h-12 shrink-0 rounded-full bg-white/5 border-2 border-white/10 text-gray-300 flex items-center justify-center group-hover:border-[#FF5600] group-hover:text-[#FF5600] transition-colors duration-300">
+                  <UserRound className="w-6 h-6" aria-hidden="true" />
                 </div>
 
                 {/* Name & Vehicle Details */}
