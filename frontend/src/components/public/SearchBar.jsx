@@ -1,136 +1,13 @@
 import { useState, useEffect, useRef } from "react";
+import vehicleFilterGroups from "../../utils/vehicleFilterGroups";
+import { vehicleApi } from "../../services/api";
 
-// ==========================================
-// FILTER DATA CONFIGURATION
-// ==========================================
-const filterGroups = [
-  {
-    id: "core",
-    label: "Core Search Filters",
-    sections: [
-      {
-        id: "price",
-        title: "Price Range",
-        options: [
-          "Under 500K",
-          "500K - 750K",
-          "750K - 1M",
-          "1M - 1.5M",
-          "1.5M - 2.5M",
-          "2.5M - 3.5M",
-          "Above 3.5M",
-        ],
-      },
-      {
-        id: "mileage",
-        title: "Mileage",
-        options: [
-          "Under 40K",
-          "40K - 80K",
-          "80K - 105K",
-          "105K - 150K",
-          "Over 150K",
-        ],
-      },
-      {
-        id: "condition",
-        title: "Condition",
-        options: ["New", "Kenyan Used", "Foreign Used"],
-      },
-    ],
-  },
-  {
-    id: "performance",
-    label: "Performance & Mechanical",
-    sections: [
-      {
-        id: "transmission",
-        title: "Transmission",
-        options: ["Automatic", "Manual"],
-      },
-      {
-        id: "driveType",
-        title: "Drive Type",
-        options: ["FWD", "RWD", "4WD", "AWD"],
-      },
-      {
-        id: "engineCc",
-        title: "Engine cc",
-        options: [
-          "Under 1000 cc",
-          "1000-1499 cc",
-          "1500-1999 cc",
-          "2000-2999 cc",
-          "3000-3999 cc",
-          "4000+ cc",
-        ],
-      },
-      {
-        id: "fuelType",
-        title: "Fuel Type",
-        options: ["Diesel", "Hybrid", "Plug-in hybrid (PHEV)", "Electric (EV)"],
-      },
-    ],
-  },
-  {
-    id: "design",
-    label: "Design & Comfort",
-    sections: [
-      {
-        id: "bodyType",
-        title: "Body Type",
-        options: [
-          "Saloon",
-          "HatchBack",
-          "Station Wagon",
-          "SUV / Offroad",
-          "Cross-over",
-          "Pick Up",
-          "Truck / Trailer",
-          "Van / Bus",
-          "Coupe",
-          "Mini-van",
-          "Bike",
-          "Convertible",
-          "Three wheeler",
-        ],
-      },
-      {
-        id: "color",
-        title: "Color",
-        options: [
-          "Black",
-          "White",
-          "Silver",
-          "Grey",
-          "Blue",
-          "Red",
-          "Green",
-          "Brown",
-          "Beige",
-          "Gold",
-          "Maroon",
-          "Other",
-        ],
-      },
-      {
-        id: "seats",
-        title: "Number of Seats",
-        options: ["2 seats", "4 seats", "5 seats", "7 seats", "8+ seats"],
-      },
-      {
-        id: "features",
-        title: "Features & Technology",
-        options: ["Sunroof", "Power liftgate"],
-      },
-    ],
-  },
-];
+const filterGroups = vehicleFilterGroups;
 
 // ==========================================
 // MAIN COMPONENT
 // ==========================================
-const SearchBar = () => {
+const SearchBar = ({ onSearch = () => {} }) => {
   // --- STATE ---
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -140,6 +17,14 @@ const SearchBar = () => {
     year: "",
   });
   const [selectedFilters, setSelectedFilters] = useState({});
+  const [catalogOptions, setCatalogOptions] = useState({
+    makes: [],
+    models: [],
+    body_types: [],
+    colors: [],
+    features: [],
+    seats: [],
+  });
   const containerRef = useRef(null);
 
   // --- CLICK OUTSIDE LOGIC ---
@@ -155,6 +40,39 @@ const SearchBar = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  useEffect(() => {
+    let active = true;
+    vehicleApi
+      .options()
+      .then((options) => {
+        if (active) setCatalogOptions(options);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const availableFilterGroups = vehicleFilterGroups.map((group) => ({
+    ...group,
+    sections: group.sections.map((section) => {
+      const savedOptions = {
+        bodyType: catalogOptions.body_types,
+        color: catalogOptions.colors,
+        features: catalogOptions.features,
+        seats: catalogOptions.seats.map(String),
+      }[section.id];
+      return savedOptions?.length
+        ? {
+            ...section,
+            options: [...new Set([...savedOptions, ...section.options])].sort(
+              (left, right) => left.localeCompare(right),
+            ),
+          }
+        : section;
+    }),
+  }));
 
   // --- HANDLERS ---
   const toggleDropdown = (id) =>
@@ -176,6 +94,32 @@ const SearchBar = () => {
   const clearAllFilters = () => {
     setSelectedFilters({});
     setTextFilters({ make: "", model: "", year: "" });
+    setSearchQuery("");
+    onSearch({});
+  };
+
+  const applySearch = () => {
+    const params = {
+      search: searchQuery.trim(),
+      make: textFilters.make,
+      model: textFilters.model,
+      year: textFilters.year,
+    };
+    const backendFields = {
+      price: "price_range",
+      mileage: "mileage_range",
+      driveType: "drive_type",
+      engineCc: "engine_cc",
+      fuelType: "fuel_type",
+      bodyType: "body_type",
+    };
+    Object.entries(selectedFilters).forEach(([key, values]) => {
+      if (values.length) params[backendFields[key] || key] = values.join(",");
+    });
+    onSearch(
+      Object.fromEntries(Object.entries(params).filter(([, value]) => value)),
+    );
+    setActiveDropdown(null);
   };
 
   // Helper to count active filters per group
@@ -203,7 +147,10 @@ const SearchBar = () => {
 
   return (
     // Background Hero Section (To showcase the transparent glassmorphism)
-    <section className="relative w-full min-h-[500px] flex items-center justify-center p-4 md:p-8 bg-[#0A0A0A] font-sans">
+    <section
+      id="vehicle-search"
+      className="scroll-mt-20 relative w-full min-h-[500px] flex items-center justify-center p-4 md:p-8 bg-[#0A0A0A] font-sans"
+    >
       <div className="absolute inset-0 z-0">
         {/* <img
           src="/search.png"
@@ -242,7 +189,11 @@ const SearchBar = () => {
               className="w-full min-w-0 bg-white/10 border border-white/20 text-[#FFFFFF] rounded-xl pl-12 sm:pl-14 pr-3 sm:pr-6 py-3.5 sm:py-4 focus:outline-none transition-all text-base sm:text-sm placeholder-gray-300 backdrop-blur-md shadow-inner"
             />
           </div>
-          <button className="bg-[#0066FF] text-[#FFFFFF] px-6 md:px-6 py-3.5 sm:py-2 rounded-xl font-bold text-base sm:text-md whitespace-nowrap hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2">
+          <button
+            type="button"
+            onClick={applySearch}
+            className="bg-[#0066FF] text-[#FFFFFF] px-6 md:px-6 py-3.5 sm:py-2 rounded-xl font-bold text-base sm:text-md whitespace-nowrap hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2"
+          >
             Search
           </button>
         </div>
@@ -264,7 +215,7 @@ const SearchBar = () => {
         <div className="relative">
           {/* Scrollable Row */}
           <div className="flex flex-row overflow-x-auto md:flex-wrap gap-4 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
-            {filterGroups.map((group) => {
+            {availableFilterGroups.map((group) => {
               const activeCount = getGroupActiveCount(group);
               const isOpen = activeDropdown === group.id;
 
@@ -309,7 +260,7 @@ const SearchBar = () => {
           {/* ========================================== */}
           {/* DROPDOWN PANELS (Rendered outside scroll)  */}
           {/* ========================================== */}
-          {filterGroups.map((group) => {
+          {availableFilterGroups.map((group) => {
             const isOpen = activeDropdown === group.id;
             if (!isOpen) return null;
 
@@ -341,6 +292,7 @@ const SearchBar = () => {
                       </h4>
                       <input
                         type="text"
+                        list="public-vehicle-makes"
                         placeholder="Make (e.g. Mercedes)"
                         value={textFilters.make}
                         onChange={(e) =>
@@ -351,8 +303,14 @@ const SearchBar = () => {
                         }
                         className="w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#0066FF] focus:ring-1 focus:ring-[#0066FF] transition-all"
                       />
+                      <datalist id="public-vehicle-makes">
+                        {catalogOptions.makes.map((make) => (
+                          <option key={make} value={make} />
+                        ))}
+                      </datalist>
                       <input
                         type="text"
+                        list="public-vehicle-models"
                         placeholder="Model (e.g. G63 AMG)"
                         value={textFilters.model}
                         onChange={(e) =>
@@ -363,6 +321,11 @@ const SearchBar = () => {
                         }
                         className="w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-[#FFFFFF] focus:outline-none focus:border-[#0066FF] focus:ring-1 focus:ring-[#0066FF] transition-all"
                       />
+                      <datalist id="public-vehicle-models">
+                        {catalogOptions.models.map((model) => (
+                          <option key={model} value={model} />
+                        ))}
+                      </datalist>
                       <input
                         type="number"
                         placeholder="Year (e.g. 2024)"
@@ -425,7 +388,7 @@ const SearchBar = () => {
                 {/* Apply Button Footer */}
                 <div className="mt-6 sm:mt-10 pt-5 sm:pt-6 border-t border-white/10 flex justify-end">
                   <button
-                    onClick={() => setActiveDropdown(null)}
+                    onClick={applySearch}
                     className="w-full sm:w-auto bg-[#0066FF] text-[#FFFFFF] px-8 sm:px-10 py-3.5 rounded-xl font-bold hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(0,102,255,0.5)] transition-all duration-300"
                   >
                     View Results

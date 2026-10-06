@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   // State to manage the mobile menu toggle
@@ -48,12 +49,18 @@ const NavBar = () => {
           >
             Contact
           </a>
+          <Link
+            to="/login"
+            className="inline-flex items-center justify-center border border-[#0066FF] text-[#FFFFFF] px-6 py-2.5 rounded-full font-semibold text-[15px] tracking-wide transition-colors duration-300 hover:bg-[#0066FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0066FF]"
+          >
+            Login
+          </Link>
         </div>
 
         {/* ======================= */}
         {/* MOBILE MENU BUTTON      */}
         {/* ======================= */}
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center gap-2">
           <button
             onClick={toggleMenu}
             className="text-[#FFFFFF] hover:text-[#0066FF] focus:outline-none transition-colors duration-300 p-2"
@@ -94,6 +101,12 @@ const NavBar = () => {
               </svg>
             )}
           </button>
+          <Link
+            to="/login"
+            className="inline-flex items-center justify-center border border-[#0066FF] text-[#FFFFFF] px-3 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-[#0066FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0066FF]"
+          >
+            Login
+          </Link>
         </div>
       </div>
 

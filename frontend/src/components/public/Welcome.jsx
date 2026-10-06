@@ -66,8 +66,8 @@ const Welcome = () => {
             {/* Call-to-Action (CTA) Button Group */}
             <div className="mt-auto pt-6 sm:pt-0 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-6 animate-fade-in-up delay-300">
               {/* Primary Button */}
-              <button
-                onClick={() => console.log("Navigate to Inventory")}
+              <a
+                href="#vehicle-search"
                 className="group relative flex w-full sm:w-auto items-center justify-center bg-[#0066FF] text-[#FFFFFF] px-6 sm:px-8 py-3.5 sm:py-4 rounded-md font-bold text-base sm:text-lg transition-all duration-300 hover:-translate-y-1"
               >
                 <span>Explore Our Cars</span>
@@ -85,15 +85,15 @@ const Welcome = () => {
                     d="M14 5l7 7m0 0l-7 7m7-7H3"
                   />
                 </svg>
-              </button>
+              </a>
 
               {/* Secondary Button */}
-              <button
-                onClick={() => console.log("Open Test Drive Modal")}
+              <a
+                href="#buying-process"
                 className="flex w-full sm:w-auto items-center justify-center bg-transparent border-2 border-[#FFFFFF] text-[#FFFFFF] px-6 sm:px-8 py-3.5 sm:py-4 rounded-md font-bold text-base sm:text-lg transition-all duration-300 hover:bg-[#FFFFFF] hover:text-[#0A0A0A] hover:-translate-y-1"
               >
                 Our Buying Process
-              </button>
+              </a>
             </div>
           </div>
         </div>

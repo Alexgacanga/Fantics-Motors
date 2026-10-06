@@ -111,7 +111,10 @@ const BuyingProcess = () => {
   const [hoveredStep, setHoveredStep] = useState(null);
 
   return (
-    <section className="bg-[#0A0A0A] w-full min-h-screen pt-14 sm:pt-20 lg:pt-32 overflow-hidden font-sans">
+    <section
+      id="buying-process"
+      className="scroll-mt-20 bg-[#0A0A0A] w-full min-h-screen pt-14 sm:pt-20 lg:pt-32 overflow-hidden font-sans"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-10 sm:mb-16 md:text-center lg:text-left">
