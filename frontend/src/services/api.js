@@ -56,6 +56,24 @@ export const authApi = {
   },
 };
 
+let initialPublicVehiclesRequest;
+
+export function preloadPublicVehicles() {
+  if (!initialPublicVehiclesRequest) {
+    initialPublicVehiclesRequest = vehicleApi
+      .publicList({ page: 1, page_size: 8 })
+      .catch((error) => {
+        initialPublicVehiclesRequest = null;
+        throw error;
+      });
+  }
+  return initialPublicVehiclesRequest;
+}
+
+function invalidateInitialPublicVehicles() {
+  initialPublicVehiclesRequest = null;
+}
+
 function vehicleBody(vehicle) {
   const hasCoverUpload = vehicle.image_upload instanceof File;
   const hasGalleryUploads =
@@ -98,14 +116,17 @@ export const vehicleApi = {
   async create(vehicle) {
     const body = vehicleBody(vehicle);
     const { data } = await api.post("/vehicles/", body);
+    invalidateInitialPublicVehicles();
     return data;
   },
   async update(id, vehicle) {
     const body = vehicleBody(vehicle);
     const { data } = await api.patch(`/vehicles/${id}/`, body);
+    invalidateInitialPublicVehicles();
     return data;
   },
   async remove(id) {
     await api.delete(`/vehicles/${id}/`);
+    invalidateInitialPublicVehicles();
   },
 };

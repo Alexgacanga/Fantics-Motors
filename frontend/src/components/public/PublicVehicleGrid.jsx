@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { CarFront, ChevronLeft, ChevronRight, ImageOff } from "lucide-react";
 import { Link } from "react-router-dom";
-import { getApiError, vehicleApi } from "../../services/api";
+import {
+  getApiError,
+  preloadPublicVehicles,
+  vehicleApi,
+} from "../../services/api";
 
 const PAGE_SIZE = 8;
 
@@ -126,8 +130,9 @@ export default function PublicVehicleGrid({ filters = {} }) {
 
   useEffect(() => {
     let active = true;
-    vehicleApi
-      .publicList({ page, page_size: PAGE_SIZE, ...filters })
+    (page === 1 && Object.keys(filters).length === 0
+      ? preloadPublicVehicles()
+      : vehicleApi.publicList({ page, page_size: PAGE_SIZE, ...filters }))
       .then((data) => {
         if (!active) return;
         const results = Array.isArray(data) ? data : data.results || [];
@@ -197,11 +202,29 @@ export default function PublicVehicleGrid({ filters = {} }) {
           </div>
         )}
         {isLoading && !error && (
-          <div
-            role="status"
-            className="grid min-h-48 place-items-center rounded-xl border border-white/10 bg-[#121212] text-sm text-gray-400"
-          >
-            Loading vehicle inventory…
+          <div role="status" aria-label="Loading vehicle inventory">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {Array.from({ length: PAGE_SIZE }, (_, index) => (
+                <div
+                  key={index}
+                  aria-hidden="true"
+                  className="animate-pulse overflow-hidden rounded-xl border border-white/10 bg-[#171717]"
+                >
+                  <div className="aspect-[5/3] bg-white/5" />
+                  <div className="space-y-3 p-4 sm:p-5">
+                    <div className="h-3 w-1/3 rounded bg-white/10" />
+                    <div className="h-5 w-2/3 rounded bg-white/10" />
+                    <div className="h-5 w-1/2 rounded bg-white/10" />
+                    <div className="grid grid-cols-2 gap-3 border-t border-white/10 pt-4">
+                      <div className="h-8 rounded bg-white/5" />
+                      <div className="h-8 rounded bg-white/5" />
+                      <div className="h-8 rounded bg-white/5" />
+                      <div className="h-8 rounded bg-white/5" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
         {!isLoading && !error && vehicles.length === 0 && (

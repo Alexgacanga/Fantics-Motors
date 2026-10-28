@@ -1,5 +1,11 @@
 # React + Vite
 
+## Vercel deployment
+
+Deploy this directory as the Vercel project root. `vercel.json` rewrites client-side routes to `index.html`, so refreshing a vehicle detail URL loads the React app instead of returning a Vercel 404.
+
+Set `VITE_API_URL` to the deployed Django API base URL ending in `/api`. The app starts its initial public vehicle request during bootstrap and reuses it for the homepage grid; skeleton cards remain visible until the live API data arrives.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
