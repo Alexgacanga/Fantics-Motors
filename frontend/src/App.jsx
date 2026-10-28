@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BuyingProcess from "./components/public/BuyingProcess";
 import Testimonials from "./components/public/Testimonials";
 import Welcome from "./components/public/Welcome";
@@ -12,7 +12,27 @@ import AdminLayout from "./layouts/AdminLayout";
 import AdminVehicleForm from "./pages/admin/AdminVehicleForm";
 import AdminVehicles from "./pages/admin/AdminVehicles";
 import { AuthProvider, ProtectedRoute } from "./context/AuthContext";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
+
+function ScrollToRoute() {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView();
+      return;
+    }
+    window.scrollTo(0, 0);
+  }, [pathname, hash]);
+
+  return null;
+}
 
 function PublicHome() {
   const [vehicleFilters, setVehicleFilters] = useState({});
@@ -36,6 +56,7 @@ function PublicHome() {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToRoute />
       <AuthProvider>
         <Routes>
           <Route path="/" element={<PublicHome />} />
